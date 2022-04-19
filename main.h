@@ -28,6 +28,7 @@ int _write(char c);
 int p_int(int number);
 int exponent(int x, int y);
 int p_bin(unsigned int num);
+int p_intu(unsigned int number);
 
 /* prototype for the print_string() function */
 int print_string(va_list *args);
@@ -36,5 +37,12 @@ int print_string(va_list *args);
 int print_char(va_list *args);
 int print_int(va_list *args);
 int print_bin(va_list *args);
+int print_intu(va_list *args);
+int print_oct(va_list *arg);
+int print_unsignedIntToHex(unsigned int num, char _case);
+int print_hex_base(va_list arg, char _case);
+int print_hex(va_list arg);
+int print_HEX(va_list arg);
+int print_STR (va_list arg);
 
 #endif

@@ -18,6 +18,8 @@ int print_function(char c, va_list *args)
 			{'d', print_int},
 			{'i', print_int},
 			{'b', print_bin},
+			{'u', print_intu},
+			{'o', print_oct},
 			{'\n', NULL}
 	};
 	while (flags[i].letter)

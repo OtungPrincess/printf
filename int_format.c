@@ -75,3 +75,16 @@ int p_bin(unsigned int num)
 	else
 		return (p_bin(num / 2) + _write(num % 2 + '0'));
 }
+
+/**
+ * p_intu - print an int using only _write
+ * @num: int to print
+ * Return: chars printed
+ **/
+int p_intu(unsigned int num)
+{
+	if (num <= 9)
+		return (_write(num + '0'));
+	else
+		return (p_intu(num / 10) + _write(num % 10 + '0'));
+}
