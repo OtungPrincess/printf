@@ -15,6 +15,8 @@ int print_function(char c, va_list *args)
 	find_flag flags[] = {
 			{'c', print_char},
 			{'s', print_string},
+			{'d', print_int},
+			{'i', print_int},
 			{'\n', NULL}
 	};
 	while (flags[i].letter)
