@@ -63,3 +63,15 @@ int p_int(int number)
 	return (result);
 }
 
+/**
+ * p_bin - convert int to binary and print
+ * @num: number to convert
+ * Return: number of chars printed
+ **/
+int p_bin(unsigned int num)
+{
+	if (num < 2)
+		return (_write(num + '0'));
+	else
+		return (p_bin(num / 2) + _write(num % 2 + '0'));
+}

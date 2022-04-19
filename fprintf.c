@@ -30,3 +30,13 @@ int print_int(va_list *args)
 {
 	return (p_int(va_arg(*args, int)));
 }
+
+/**
+ * print_bin - makes object into int, print as binary
+ * @args: va_list object
+ * Return: chars printed
+ **/
+int print_bin(va_list *args)
+{
+	return (p_bin(va_arg(*args, unsigned int)));
+}
