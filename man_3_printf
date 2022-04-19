@@ -1,15 +1,25 @@
-.TH _PRINTF "18 April 2022" "_printf man page"
+.TH _PRINTF 3 "18 April 2022" "0.1" "ALX software engineering C - _printf man page"
+
 .SH NAME
 _printf \- Print formated input
+
 .SH SYNOPSIS
 .B #include "main.h"
+
 .LP
 .B int printf(const char *, ...);
+
 .SH DESCRIPTION
 .B _printf()
-Takes any argument and prints it according to each format specified.
-.br
-Returns the numbers of characters printed (excluding the null byte at the end).
+Takes any argument and prints it according to each format specified. The function writes under the control of a format string that specifies how subsequent arguments (accessed via the variable-length argument facilities of stdarg) are converted for output.
+
+.br Return Value
+.in +2n
+When successful, _printf() returns the number of characters printed (excluding the null byte used to end output to strings).
+
+If an output error is encountered, -1 is returned.
+.in
+
 .PP
 .B FORMAT:
 .br
@@ -26,6 +36,7 @@ Use the operator % and add any option:
 %b - for printing an unsigned integer as a binary number -
 .br
 %u - for printing an unsigned integer -
+
 .SH SOME EXAMPLES
 To print:
 .PP
@@ -41,9 +52,14 @@ _printf("%c", 'H');
 _printf("%s", "Hello World");
 .B // the output will be 'Hello World'
 .RE
+
 .SH SEE ALSO
 putchar(3), printf(3)
+
 .SH BUGS
 No known bugs, so far.
+
+The _printf() function emulates the workings of the C standard library function printf().
+
 .SH AUTHOR
-Otung Princess, Oghenemeru G. Avwemoya 
+Otung Princess and Oghenemeru G. Avwemoya 

@@ -14,12 +14,22 @@ typedef struct flag
 	int (*prnt)(va_list *);
 } find_flag;
 
+/* prototype for thr _printf() function */
 int _printf(const char *format, ...);
+
+/* prototype for the print_function() function */
 int print_function(char c, va_list *args);
+
+/* prototype for the p_string() function */
 int p_string(char *s);
+
+/* prototype for the _write() function */
 int _write(char c);
 
+/* prototype for the print_string() function */
 int print_string(va_list *args);
+
+/* prototype for the print_char() function */
 int print_char(va_list *args);
 
 #endif
