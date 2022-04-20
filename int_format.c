@@ -2,89 +2,93 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
+
+
 /**
- * exponent - x to the power of y
- * @x: base number
- * @y: exponent
- * Description: calcuates x^y
- * Return: x^y
- **/
-int exponent(int x, int y)
+ * print_unsignedToBinary - prints an integer.
+ * @arg: argument
+ * Return: 0
+ */
+int print_unsignedToBinary(va_list arg)
 {
-	if (y < 0)
+
+unsigned int n = va_arg(arg, unsigned int);
+unsigned int printed;
+
+print_binary(n, &printed);
+print_binary(n, &printed);
+
+return (printed);
+}
+
+
+/**
+ * print_oct - prints number in octal base.
+ * @arg: list containing octal number to be printed
+ * Return: number of octals printed
+ */
+
+int print_oct(va_list arg)
+{
+	unsigned int num = va_arg(arg, unsigned int);
+	unsigned int copy;
+	char *octa;
+	int i, j, charPrinted = 0;
+
+	if (num == 0)
+		return (_write('0'));
+	for (copy = num; copy != 0; j++)
+	{
+		copy = copy / 8;
+	}
+	octa = malloc(j);
+	if (!octa)
 		return (-1);
-	if (y == 0)
-		return (1);
 
-	return (x * exponent(x, y - 1));
+	for (i = j - 1; i >= 0; i--)
+	{
+		octa[i] = num % 8 + '0';
+		num = num / 8;
+	}
+
+	for (i = 0; i < j && octa[i] == '0'; i++)
+		;
+	for (; i < j; i++)
+	{
+		_write(octa[i]);
+		charPrinted++;
+	}
+	free(octa);
+	return (charPrinted);
 }
 
 /**
- * p_int - print an int using only _write
- * @number: int to print
- * Return: chars printed
- **/
-int p_int(int number)
+ * print_unsignedIntToHex - prints unsigned int to hexadecimal.
+ * @num: number to print
+ * @_case: letter `a` on the case to print it (upper or lower)
+ * Return: number or char printed
+ */
+int print_unsignedIntToHex(unsigned int num, char _case)
 {
-	int size, digit, result;
-	long counter, sign;
+	unsigned int num2;
+	int i, j, remainder, nbrCharacters = 0;
+	char *numhex;
 
-	sign = 1;
-	digit = 0;
-	size = 1;
-	counter = number;
-	result = 0;
+	for (num2 = num; num2 != 0; nbrCharacters++, num2 /= 16)
+	;
 
-	if (number < 0)
+	numhex = malloc(nbrCharacters);
+	for (i = 0; num != 0; i++)
 	{
-		_write('-');
-		sign = -1;
-		counter *= sign;
-		result++;
+		remainder = num % 16;
+		if (remainder < 10)
+			numhex[i] = remainder + '0';
+		else
+			numhex[i] = remainder - 10 + _case;
+		num = num / 16;
 	}
-
-	for (; counter >= 10; size++)
-	{
-		counter = counter / 10;
-	}
-
-	counter = sign * (long)number;
-
-	while (size >= 2)
-	{
-		digit = (counter / exponent(10, size - 1));
-		_write(digit + '0');
-		counter = counter % exponent(10, size - 1);
-		size--;
-		result++;
-	}
-	_write(counter % 10 + '0');
-	result++;
-	return (result);
-}
-
-/**
- * p_bin - convert int to binary and print
- * @num: number to convert
- * Return: number of chars printed
- **/
-int p_bin(unsigned int num)
-{
-	if (num < 2)
-		return (_write(num + '0'));
-	else
-		return (p_bin(num / 2) + _write(num % 2 + '0'));
-}
-
-/**
- * p_intu - print an int using only _write
- * @num: int to print
- * Return: chars printed
- **/
-int p_intu(unsigned int num)
-{
-	if (num <= 9)
-		return (_write(num + '0'));
-	else
-		return (p_intu(num / 10) + _write(num % 10 + '0'));
+	for (j = i - 1; j >= 0; j--)
+		_write(numhex[j]);
+	free(numhex);
+	return (nbrCharacters);
 }

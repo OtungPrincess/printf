@@ -1,53 +1,18 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
-/**
- * print_string - makes object into string
- * @args: va_list object
- * Return: chars printed
- **/
-int print_string(va_list *args)
-{
-	return (p_string(va_arg(*args, char *)));
-}
 
 /**
- * print_char - makes object into char
- * @args: va_list object
- * Return: chars printed
- **/
-int print_char(va_list *args)
+ * print_binary - function that prints the binary representation of a number
+ * @n: number to be printed in binary
+ * @printed: hold the number of characters printed
+ */
+void print_binary(unsigned int n, unsigned int *printed)
 {
-	return (_write(va_arg(*args, int)));
+	if (n > 1)
+	{
+		*printed += 1;
+		print_binary(n >> 1, printed);
+	}
+	_write((n & 1) + '0');
 }
-
-/**
- * print_int - makes object into int
- * @args: va_list object
- * Return: digits printed
- **/
-int print_int(va_list *args)
-{
-	return (p_int(va_arg(*args, int)));
-}
-
-/**
- * print_bin - makes object into int, print as binary
- * @args: va_list object
- * Return: chars printed
- **/
-int print_bin(va_list *args)
-{
-	return (p_bin(va_arg(*args, unsigned int)));
-}
-
-/**
- * print_intu - makes object into int
- * @args: va_list object
- * Return: digits printed
- **/
-int print_intu(va_list *args)
-{
-	return (p_intu(va_arg(*args, unsigned int)));
-}
-
