@@ -57,7 +57,7 @@ _printf("%s", "Hello World");
 putchar(3), printf(3)
 
 .SH BUGS
-No known bugs, so far.
+long and short unsigned int aren't producing the expected result yet. and the custome conversion of r and R aren't working.
 
 The _printf() function emulates the workings of the C standard library function printf().
 
