@@ -31,10 +31,6 @@ typedef struct printHandler
 	int (*f)(va_list ap, flags_t *f);
 } ph;
 
-/* Length Modifier Macros */
-#define SHORT 1
-#define LONG 2
-
 /* print_nums */
 int print_int(va_list l, flags_t *f);
 void print_number(int n);
@@ -46,8 +42,6 @@ int print_hex(va_list l, flags_t *f);
 int print_hex_big(va_list l, flags_t *f);
 int print_binary(va_list l, flags_t *f);
 int print_octal(va_list l, flags_t *f);
-int print_buf(char *buf, unsigned int nbuf);
-int print_lint(va_list args, char *buf, unsigned int ibuf);
 
 /* converter */
 char *convert(unsigned long int num, int base, int lowercase);
